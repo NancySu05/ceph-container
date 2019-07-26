@@ -17,8 +17,6 @@ if [ -z "$CEPH_RELEASES" ]; then
 fi
 # allow overriding with podman
 DOCKER_CMD=${DOCKER_CMD:docker}
-# branch of ceph to use, if DEVEL
-CEPH_WIP_BRANCH=${CEPH_WIP_BRANCH:-master}
 
 # must be set by build job
 # CONTAINER_REPO_ORGANIZATION=${CONTAINER_REPO_ORGANIZATION:-"dmick"}
@@ -167,14 +165,11 @@ function build_ceph_imgs {
   echo "Build Ceph container image(s)"
   FLAVORS=""
   if ${DEVEL}; then
-    if [[ -n "${CEPH_WIP_BRANCH}" ]] ; then
-      FLAVORS="${CEPH_WIP_BRANCH},centos,7"
-      make FLAVORS=${FLAVORS} CEPH_DEVEL=${DEVEL} RELEASE="$RELEASE" build.parallel
-      ${DOCKER_CMD} images
-      return
-    fi
+    FLAVORS="${BRANCH},centos,7"
+    make FLAVORS=${FLAVORS} CEPH_DEVEL=${DEVEL} RELEASE="$RELEASE" build.parallel
+  else
+    make CEPH_DEVEL=${DEVEL} RELEASE="$RELEASE" build.parallel
   fi
-  make CEPH_DEVEL=${DEVEL} RELEASE="$RELEASE" build.parallel
   ${DOCKER_CMD} images
 }
 
