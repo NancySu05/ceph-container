@@ -50,7 +50,7 @@ function install_docker {
 
 declare -F install_podman ||
 function install_podman {
-  sudo yum install podman
+  sudo yum install -y podman
 }
 
 declare -F install_container_manager ||
