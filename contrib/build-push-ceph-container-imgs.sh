@@ -16,7 +16,7 @@ if [ -z "$CEPH_RELEASES" ]; then
   CEPH_RELEASES=(master luminous mimic nautilus)
 fi
 # allow overriding with podman
-DOCKER_CMD=${DOCKER_CMD:docker}
+DOCKER_CMD=${DOCKER_CMD:-docker}
 
 # must be set by build job
 # CONTAINER_REPO_ORGANIZATION=${CONTAINER_REPO_ORGANIZATION:-"dmick"}
