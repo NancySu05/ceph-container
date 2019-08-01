@@ -66,7 +66,7 @@ function install_container_manager {
   fi
 }
 
-function login_container_hub {
+function login_container_repo {
   echo "Log into the container repo"
   ${DOCKER_CMD} login -u "$CONTAINER_REPO_USERNAME" -p "$CONTAINER_REPO_PASSWORD"
 }
