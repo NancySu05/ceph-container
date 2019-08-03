@@ -128,6 +128,7 @@ def do_variable_replace(replace_root_dir):
                     '[Skip __VARIABLE__ replace]', os.path.join(dirname, f)))
                 continue
             file_path = os.path.join(dirname, f)
+            logging.info('do_variable_replace starting on file %s/%s' % (replace_root_dir, file_path))
             total_replacements, rendered_text = _do_replace_on_file(file_path, replace_root_dir)
             if total_replacements > 0:
                 # Only save if there have been changes
