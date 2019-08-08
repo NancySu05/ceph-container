@@ -1,6 +1,6 @@
 #!/bin/bash
 
-####test_osd_zll###
+###test_osd_zll##
 set -e
 
 if is_redhat; then
