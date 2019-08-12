@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+#add by zqh
 # Bash substitution to remove everything before '='
 # and only keep what is after
 function extract_param {
