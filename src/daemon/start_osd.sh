@@ -1,4 +1,7 @@
 #!/bin/bash
+
+##test##
+
 set -e
 
 if is_redhat; then
